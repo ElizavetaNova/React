@@ -1,39 +1,44 @@
-import moment from 'moment';
-import { Component } from 'react';
-import notes from './data.json';
-import { CreateNote } from './components/createNote/createNote';
+import React, { Component } from 'react';
+import movies from './MOVIES.json';
 import { Header } from './components/header/header';
 import './styles/app.scss';
-import { Note } from './interfaces/note';
-import { Notes } from './components/noteList/notes';
+import { Movie } from './interfaces/movie';
+import { Movies } from './components/movieList/movies';
+import { Form } from './components/createMovies/form'
+
 
 interface AppState {
-    notes: Note[];
+    movies: Movie[];
 }
 
-class App extends Component<{}, AppState> {
+const [showResults, setShowResults] = React.useState(false)
+const onClick = () => setShowResults(true)
+
+class App extends Component<{}, AppState> {    
+
     state = {
-        notes: [],
+        movies: []
     };
-
+    
     componentDidMount() {
-        this.setState({ notes });
+        this.setState({ movies});
     }
-
-    saveNote = (newNote: string) => {
-        const newNotes: Note[] = this.state.notes;
-        newNotes.push({
-            text: newNote,
-            date: moment()
-                .format('DD.MM.YYYY'),
+    saveMovie = (newMovie: Movie) => {
+        const newMovies: Movie[] = this.state.movies;
+        newMovies.push({
+            id: '',
+            title: newMovie.title,
+            rate: newMovie.rate,
+            comment: newMovie.comment,
+            date: newMovie.date
         });
-        this.setState({ notes: newNotes });
+        this.setState({ movies: newMovies });
     };
 
     deleteNote = (index: number) => {
-        const newNotes: Note[] = this.state.notes;
-        newNotes.splice(index, 1);
-        this.setState({ notes: newNotes });
+        const newMovies: Movie[] = this.state.movies;
+        newMovies.splice(index, 1);
+        this.setState({ movies: newMovies });
     };
 
     render() {
@@ -45,19 +50,19 @@ class App extends Component<{}, AppState> {
                         <h1 className={'app__title'}>
                             Заметки
                         </h1>
-                        <CreateNote
-                            saveNote={(newNote) => this.saveNote(newNote)}
-                        />
-                        <Notes
-                            notes={this.state.notes}
+                        <Movies
+                            movies={this.state.movies}
                             deleteNote={(index) => this.deleteNote(index)}
                         />
+                        <div>
+                            <input type="button" value="Add new movie" onClick={onClick} />
+                            {showResults ? <Form saveMovie={(newMovie) => this.saveMovie(newMovie)}/> : null}
+                        </div>                        
                     </div>
                 </main>
             </div>
         );
     }
-
 }
 
 export default App;
