@@ -22,7 +22,7 @@ export const Form = (props: CreateMovieParams) => {
     });
     const onHiddenForm = () => {
         props.hiddenForm(true);
-    }
+    };
     const onSaveMovie = () => {
         props.saveMovie(movie);
         setMovie({
@@ -32,19 +32,18 @@ export const Form = (props: CreateMovieParams) => {
             comment: '',
             date: ''
         });
-        
+
     };
 
     return (
         <form className={'add-movie__form'} >
 
-        <label>Title : </label>
-             <input type="text"
+            <label>Title : </label>
+            <input type="text"
                 value={title}
                 name={'title'}
                 onChange={(event) => {
                     setTitle(event.target.value);
-                    console.log(title)
                     setMovie({
                         id: '',
                         title: title,
@@ -52,7 +51,7 @@ export const Form = (props: CreateMovieParams) => {
                         comment: comment,
                         date: date
                     });
-                    }
+                }
                 }
             />
 
@@ -63,7 +62,7 @@ export const Form = (props: CreateMovieParams) => {
                 max={5}
                 min={0}
                 onChange={(event) => {
-                    setRate(Number(event.target.value))
+                    setRate(Number(event.target.value));
                     setMovie({
                         id: '',
                         title: title,
@@ -72,14 +71,14 @@ export const Form = (props: CreateMovieParams) => {
                         date: date
                     });
                 }}
-           />
+            />
 
-           <label>Date : </label>
+            <label>Date : </label>
             <input type="date"
                 value={date}
                 name={'date'}
                 onChange={(event) => {
-                    setDate(event.target.value)
+                    setDate(event.target.value);
                     setMovie({
                         id: '',
                         title: title,
@@ -88,14 +87,14 @@ export const Form = (props: CreateMovieParams) => {
                         date: date
                     });
                 }}
-           />
+            />
 
-           <label>Description : </label>
+            <label>Description : </label>
             <textarea
                 value={comment}
                 name={'comment'}
                 onChange={(event) => {
-                    setComment(event.target.value)
+                    setComment(event.target.value);
                     setMovie({
                         id: '',
                         title: title,
@@ -104,14 +103,14 @@ export const Form = (props: CreateMovieParams) => {
                         date: date
                     });
                 }}
-           />
+            />
 
             <input type="submit" value="Save" onClick={(event) => {
-                event.preventDefault()
-                onSaveMovie()
-                onHiddenForm()
+                event.preventDefault();
+                onSaveMovie();
+                onHiddenForm();
             }}
             />
         </form>
-   )
-}
+    );
+};

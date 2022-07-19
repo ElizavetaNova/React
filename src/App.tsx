@@ -4,7 +4,7 @@ import { Header } from './components/header/header';
 import './styles/app.scss';
 import { Movie } from './interfaces/movie';
 import { Movies } from './components/movieList/movies';
-import { Form } from './components/createMovies/form'
+import { Form } from './components/createMovies/form';
 
 
 interface AppState {
@@ -22,18 +22,18 @@ class App extends Component<{}, AppState> {
     };
     onClick = () => {
         if (this.state.showForm == false) {
-            this.setState({ showForm: true })
-            this.setState({ valueButton: 'Canсel' })
+            this.setState({ showForm: true });
+            this.setState({ valueButton: 'Canсel' });
         }
         else {
-            this.setState({ showForm: false })
-            this.setState({ valueButton: 'Add' })
-        }        
-    }
+            this.setState({ showForm: false });
+            this.setState({ valueButton: 'Add' });
+        }
+    };
     componentDidMount() {
         this.setState({ movies });
-        this.setState({ showForm: false })
-        this.setState({ valueButton: 'Add' })
+        this.setState({ showForm: false });
+        this.setState({ valueButton: 'Add' });
     }
     saveMovie = (newMovie: Movie) => {
         const newMovies: Movie[] = this.state.movies;

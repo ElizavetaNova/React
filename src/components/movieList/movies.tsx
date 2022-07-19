@@ -8,6 +8,7 @@ interface CreateMovieParams {
 }
 
 export const Movies = (props: CreateMovieParams) => {
+    const lenghtComment = 200;
     return (
         <table
             className={'app-table table-movies'}
@@ -40,18 +41,18 @@ export const Movies = (props: CreateMovieParams) => {
                         >{movie.date}</td>
                         <td
                             className={'movies-item__td item-td'}
-                        >{movie.comment.substring(0, 200)}</td>
+                        >{movie.comment.substring(0, lenghtComment)}</td>
                         <td
                             className={'movies-item__td item-td'}
                         >
                             <button
-                            onClick={() => props.deleteNote(index)}
+                                onClick={() => props.deleteNote(index)}
                             >
-                            <img className={'item-td__img'} src={deleteIcon} alt={'delete'} />
+                                <img className={'item-td__img'} src={deleteIcon} alt={'delete'} />
                             </button>
                         </td>
                     </tr>
-                    ))
+                ))
             }
         </table>
     );
