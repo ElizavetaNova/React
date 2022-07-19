@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Movie } from '../../interfaces/movie';
-//import { Movies } from '../noteList/movies';
 
 interface CreateMovieParams {
     saveMovie(newNovie: Movie): void;
@@ -107,14 +106,6 @@ export const Form = (props: CreateMovieParams) => {
 
             <input type="submit" value="Save" onClick={(event) => {
                 event.preventDefault()
-                //setMovie({
-                //    id: '',
-                //    title: title,
-                //    rate: rate,
-                //    comment: comment,
-                //    date: date
-                //});
-                //console.log(movie.rate)
                 onSaveMovie()
                 onHiddenForm()
             }}

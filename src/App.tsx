@@ -13,12 +13,6 @@ interface AppState {
     valueButton: string;
 }
 
-//const [showResults, setShowResults] = setState(false)
-//const onClick = () => {
-//    setShowResults(true)
-//    console.log(showResults);
-//}
-
 class App extends Component<{}, AppState> {    
     
     state = {
@@ -34,8 +28,7 @@ class App extends Component<{}, AppState> {
         else {
             this.setState({ showForm: false })
             this.setState({ valueButton: 'Add' })
-        }
-        // const bool = true        
+        }        
     }
     componentDidMount() {
         this.setState({ movies });
@@ -51,7 +44,6 @@ class App extends Component<{}, AppState> {
             comment: newMovie.comment,
             date: newMovie.date
         });
-        //console.log(newMovie.rate)
         this.setState({ movies: newMovies });
     };
 
