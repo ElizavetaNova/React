@@ -4,6 +4,7 @@ import { Movie } from '../../interfaces/movie';
 
 interface CreateMovieParams {
     saveMovie(newNovie: Movie): void;
+    hiddenForm(showForm: boolean): void;
 }
 
 export const Form = (props: CreateMovieParams) => {
@@ -19,49 +20,105 @@ export const Form = (props: CreateMovieParams) => {
         comment: '',
         date: ''
     });
-
+    const onHiddenForm = () => {
+        props.hiddenForm(true);
+    }
     const onSaveMovie = () => {
         props.saveMovie(movie);
         setMovie({
             id: '',
-            title: title,
-            rate: rate,
-            comment: comment,
-            date: date
+            title: '',
+            rate: 0,
+            comment: '',
+            date: ''
         });
+        
+        //console.log(rate)
     };
 
-   return( <form id="add-app">
+    return (
+        <form id="add-app">
 
         <label>Title : </label>
-       <input type="text"
-           value={title}
-           name={'title'}
-           onChange={(event) => setTitle(event.target.value)}
-       />
+             <input type="text"
+                value={title}
+                name={'title'}
+                onChange={(event) => {
+                    setTitle(event.target.value);
+                    console.log(title)
+                    setMovie({
+                        id: '',
+                        title: title,
+                        rate: rate,
+                        comment: comment,
+                        date: date
+                    });
+                    }
+                }
+            />
 
-        <label>Rate : </label>
-       <input type="text"
-           value={rate}
-           name={'rate'}
-           onChange={(event) => setRate(Number(event.target.value))}
-       />
+            <label>Rate : </label>
+            <input type="number"
+                value={rate}
+                name={'rate'}
+                onChange={(event) => {
+                    setRate(Number(event.target.value))
+                    setMovie({
+                        id: '',
+                        title: title,
+                        rate: rate,
+                        comment: comment,
+                        date: date
+                    });
+                }}
+           />
 
-       <label>Date : </label>
-       <input type="date"
-           value={date}
-           name={'date'}
-           onChange={(event) => setDate(event.target.value)}
-       />
+           <label>Date : </label>
+            <input type="date"
+                value={date}
+                name={'date'}
+                onChange={(event) => {
+                    setDate(event.target.value)
+                    setMovie({
+                        id: '',
+                        title: title,
+                        rate: rate,
+                        comment: comment,
+                        date: date
+                    });
+                }}
+           />
 
-       <label>Description : </label>
-       <textarea className={''}
-           value={comment}
-           name={'comment'}
-           onChange={(event) => setComment(event.target.value)}
-       />
+           <label>Description : </label>
+            <textarea className={''}
+                value={comment}
+                name={'comment'}
+                onChange={(event) => {
+                    setComment(event.target.value)
+                    setMovie({
+                        id: '',
+                        title: title,
+                        rate: rate,
+                        comment: comment,
+                        date: date
+                    });
+                }}
+           />
 
-       <input type="submit" value="Save" onClick={() => onSaveMovie()}/>
-   </form>
+            <input type="submit" value="Save" onClick={(event) => {
+                event.preventDefault()
+                //setMovie({
+                //    id: '',
+                //    title: title,
+                //    rate: rate,
+                //    comment: comment,
+                //    date: date
+                //});
+                //console.log(movie.rate)
+                onSaveMovie()
+                onHiddenForm()
+            }}
+            />
+        </form>
    )
 }

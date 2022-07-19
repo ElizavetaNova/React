@@ -9,29 +9,49 @@ import { Form } from './components/createMovies/form'
 
 interface AppState {
     movies: Movie[];
+    showForm: boolean;
+    valueButton: string;
 }
 
-const [showResults, setShowResults] = React.useState(false)
-const onClick = () => setShowResults(true)
+//const [showResults, setShowResults] = setState(false)
+//const onClick = () => {
+//    setShowResults(true)
+//    console.log(showResults);
+//}
 
 class App extends Component<{}, AppState> {    
-
-    state = {
-        movies: []
-    };
     
+    state = {
+        movies: [],
+        showForm: false,
+        valueButton: 'Add'
+    };
+    onClick = () => {
+        if (this.state.showForm == false) {
+            this.setState({ showForm: true })
+            this.setState({ valueButton: 'Cansel' })
+        }
+        else {
+            this.setState({ showForm: false })
+            this.setState({ valueButton: 'Add' })
+        }
+        // const bool = true        
+    }
     componentDidMount() {
-        this.setState({ movies});
+        this.setState({ movies });
+        this.setState({ showForm: false })
+        this.setState({ valueButton: 'Add' })
     }
     saveMovie = (newMovie: Movie) => {
         const newMovies: Movie[] = this.state.movies;
         newMovies.push({
-            id: '',
+            id: newMovie.id,
             title: newMovie.title,
             rate: newMovie.rate,
             comment: newMovie.comment,
             date: newMovie.date
         });
+        //console.log(newMovie.rate)
         this.setState({ movies: newMovies });
     };
 
@@ -48,15 +68,15 @@ class App extends Component<{}, AppState> {
                 <main>
                     <div className={'container'}>
                         <h1 className={'app__title'}>
-                            Заметки
+                            Movies
                         </h1>
                         <Movies
                             movies={this.state.movies}
                             deleteNote={(index) => this.deleteNote(index)}
                         />
                         <div>
-                            <input type="button" value="Add new movie" onClick={onClick} />
-                            {showResults ? <Form saveMovie={(newMovie) => this.saveMovie(newMovie)}/> : null}
+                            <input type="button" value={this.state.valueButton} onClick={this.onClick} />
+                            {this.state.showForm ? <Form saveMovie={(newMovie) => this.saveMovie(newMovie)} hiddenForm={this.onClick} /> : null}
                         </div>                        
                     </div>
                 </main>
