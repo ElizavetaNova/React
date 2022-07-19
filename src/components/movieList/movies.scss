@@ -1,18 +1,26 @@
 .table-movies {
-  width: 100%;
-  margin: 10px auto;
-  padding: 10px;
-  border: 1px solid #eee;
-  list-style-type: none;
+    width: 100%;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #eee;
+    list-style-type: none;
 
-  &__thead{
+    &__thead {
+    }
 
-  }
+    &__item {
+        //display: flex;
+        //justify-content: space-between;
+        //gap: 10px;
+        padding: 10px 0;
 
-  &__item {
-    //display: flex;
-    //justify-content: space-between;
-    //gap: 10px;
-    padding: 10px 0;
-  }
+        .item-td {
+            &__img {
+                width: 20px;
+                height: 20px;
+                background-color: maroon;
+            }
+        }
+    }
 }
+

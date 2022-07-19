@@ -23,7 +23,7 @@ class App extends Component<{}, AppState> {
     onClick = () => {
         if (this.state.showForm == false) {
             this.setState({ showForm: true })
-            this.setState({ valueButton: 'Cansel' })
+            this.setState({ valueButton: 'Canсel' })
         }
         else {
             this.setState({ showForm: false })
@@ -66,8 +66,8 @@ class App extends Component<{}, AppState> {
                             movies={this.state.movies}
                             deleteNote={(index) => this.deleteNote(index)}
                         />
-                        <div>
-                            <input type="button" value={this.state.valueButton} onClick={this.onClick} />
+                        <div className={'app-add_movie add-movie'}>
+                            <input className={'add-movie__btn primary-button'} type="button" value={this.state.valueButton} onClick={this.onClick} />
                             {this.state.showForm ? <Form saveMovie={(newMovie) => this.saveMovie(newMovie)} hiddenForm={this.onClick} /> : null}
                         </div>                        
                     </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Movie } from '../../interfaces/movie';
+import './form.scss';
 
 interface CreateMovieParams {
     saveMovie(newNovie: Movie): void;
@@ -32,11 +33,10 @@ export const Form = (props: CreateMovieParams) => {
             date: ''
         });
         
-        //console.log(rate)
     };
 
     return (
-        <form id="add-app">
+        <form className={'add-movie__form'} >
 
         <label>Title : </label>
              <input type="text"
@@ -60,6 +60,8 @@ export const Form = (props: CreateMovieParams) => {
             <input type="number"
                 value={rate}
                 name={'rate'}
+                max={5}
+                min={0}
                 onChange={(event) => {
                     setRate(Number(event.target.value))
                     setMovie({
@@ -89,7 +91,7 @@ export const Form = (props: CreateMovieParams) => {
            />
 
            <label>Description : </label>
-            <textarea className={''}
+            <textarea
                 value={comment}
                 name={'comment'}
                 onChange={(event) => {
