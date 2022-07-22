@@ -20,12 +20,7 @@ class App extends Component<{}, AppState> {
     };
 
     toggleForm = () => {
-        if (this.state.showForm == false) {
-            this.setState({ showForm: true });
-        }
-        else {
-            this.setState({ showForm: false });
-        }
+        this.setState({ showForm: !this.state.showForm })
     };
     componentDidMount() {
         this.setState({ movies });
