@@ -38,10 +38,7 @@ export const Form = (props: CreateMovieParams) => {
             <input type={'text'}
                 value={title}
                 name={'title'}
-                onChange={(event) => {
-                    setTitle(event.target.value);
-                    
-                }}
+                onChange={(event) => {setTitle(event.target.value);}}
             />
 
             <label>Rate : </label>
@@ -50,9 +47,7 @@ export const Form = (props: CreateMovieParams) => {
                 name={'rate'}
                 max={5}
                 min={0}
-                onChange={(event) => {
-                    setRate(Number(event.target.value));
-                    
+                onChange={(event) => {setRate(Number(event.target.value));
                 }}
             />
 
@@ -60,26 +55,21 @@ export const Form = (props: CreateMovieParams) => {
             <input type="date"
                 value={date}
                 name={'date'}
-                onChange={(event) => {
-                    setDate(event.target.value);
-                    
-                }}
+                onChange={(event) => {setDate(event.target.value);}}
             />
 
             <label>Description : </label>
             <textarea
                 value={comment}
                 name={'comment'}
-                onChange={(event) => {
-                    setComment(event.target.value);
-                    
-                }}
+                onChange={(event) => {setComment(event.target.value);}}
             />
 
-            <input type="submit" value="Save" onClick={(event) => {
-                event.preventDefault();
-                onSaveMovie();
-            }}
+            <input type="submit" value="Save"
+                onClick={(event) => {
+                    event.preventDefault();
+                    onSaveMovie();
+                }}
             />
         </form>
     );

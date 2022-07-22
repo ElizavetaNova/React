@@ -29,7 +29,7 @@ main {
   color: $white;
   border: none;
   border-radius: 8px;
-  cursor:pointer;
+  cursor: pointer;
 
   &:disabled {
     background-color: $secondary;
