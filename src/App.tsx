@@ -22,10 +22,11 @@ class App extends Component<{}, AppState> {
     toggleForm = () => {
         this.setState({ showForm: !this.state.showForm })
     };
+
     componentDidMount() {
         this.setState({ movies });
-        this.setState({ showForm: false });
     }
+
     saveMovie = (newMovie: Movie) => {
         const newMovies: Movie[] = this.state.movies;
         newMovies.push({

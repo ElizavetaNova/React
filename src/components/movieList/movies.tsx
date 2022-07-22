@@ -9,7 +9,9 @@ interface CreateMovieParams {
 }
 
 export const Movies = (props: CreateMovieParams) => {
+
     const lenghtComment = 200;
+
     return (
         <table
             className={'app-table table-movies'}
