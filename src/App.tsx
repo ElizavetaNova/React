@@ -10,30 +10,26 @@ import { Form } from './components/createMovies/form';
 interface AppState {
     movies: Movie[];
     showForm: boolean;
-    valueButton: string;
 }
 
 class App extends Component<{}, AppState> {    
     
     state = {
         movies: [],
-        showForm: false,
-        valueButton: 'Add'
+        showForm: false
     };
-    onClick = () => {
+
+    toggleForm = () => {
         if (this.state.showForm == false) {
             this.setState({ showForm: true });
-            this.setState({ valueButton: 'Canсel' });
         }
         else {
             this.setState({ showForm: false });
-            this.setState({ valueButton: 'Add' });
         }
     };
     componentDidMount() {
         this.setState({ movies });
         this.setState({ showForm: false });
-        this.setState({ valueButton: 'Add' });
     }
     saveMovie = (newMovie: Movie) => {
         const newMovies: Movie[] = this.state.movies;
@@ -67,8 +63,15 @@ class App extends Component<{}, AppState> {
                             deleteNote={(index) => this.deleteNote(index)}
                         />
                         <div className={'app-add_movie add-movie'}>
-                            <input className={'add-movie__btn primary-button'} type="button" value={this.state.valueButton} onClick={this.onClick} />
-                            {this.state.showForm ? <Form saveMovie={(newMovie) => this.saveMovie(newMovie)} hiddenForm={this.onClick} /> : null}
+                            <button className={'add-movie__btn primary-button'} onClick={this.toggleForm}>
+                                {this.state.showForm ? 'Cancel' : 'Add'}
+                            </button>
+                            {this.state.showForm
+                                ? <Form
+                                    saveMovie={(newMovie) => this.saveMovie(newMovie)}
+                                    hideForm={this.toggleForm}
+                                />
+                                : null}
                         </div>                        
                     </div>
                 </main>

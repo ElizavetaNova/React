@@ -1,6 +1,7 @@
 import deleteIcon from '../../images/close.svg';
 import { Movie } from '../../interfaces/movie';
 import './movies.scss';
+import React, { Component } from 'react';
 
 interface CreateMovieParams {
     movies: Movie[];
@@ -37,15 +38,18 @@ export const Movies = (props: CreateMovieParams) => {
                             className={'movies-item__td item-td'}
                         >{movie.rate}</td>
                         <td
-                            className={'movies-item__td item-td'}
+                            className={'movies-item__td item-td '}
+                            id={'date-td'}
                         >{movie.date}</td>
                         <td
                             className={'movies-item__td item-td'}
+                            id={'comment-td'}
                         >{movie.comment.substring(0, lenghtComment)}</td>
                         <td
                             className={'movies-item__td item-td'}
                         >
                             <button
+                                className={'item-td__btn'}
                                 onClick={() => props.deleteNote(index)}
                             >
                                 <img className={'item-td__img'} src={deleteIcon} alt={'delete'} />

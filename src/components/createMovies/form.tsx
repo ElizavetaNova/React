@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Movie } from '../../interfaces/movie';
 import './form.scss';
+import React, { Component } from 'react';
+
 
 interface CreateMovieParams {
     saveMovie(newNovie: Movie): void;
-    hiddenForm(showForm: boolean): void;
+    hideForm(showForm: boolean): void;
 }
 
 export const Form = (props: CreateMovieParams) => {
@@ -13,46 +15,33 @@ export const Form = (props: CreateMovieParams) => {
     const [date, setDate] = useState<string>('');
     const [comment, setComment] = useState<string>('');
 
-    const [movie, setMovie] = useState<Movie>({
-        id: '',
-        title: '',
-        rate: 0,
-        comment: '',
-        date: ''
-    });
-    const onHiddenForm = () => {
-        props.hiddenForm(true);
+    const HideForm = () => {
+        props.hideForm(true);
     };
-    const onSaveMovie = () => {
-        props.saveMovie(movie);
-        setMovie({
-            id: '',
-            title: '',
-            rate: 0,
-            comment: '',
-            date: ''
-        });
 
+    const onSaveMovie = () => {
+        const newMovie: Movie = {
+            id: '',
+            title,
+            rate,
+            comment,
+            date
+        };
+        props.saveMovie(newMovie);
+        HideForm();
     };
 
     return (
         <form className={'add-movie__form'} >
 
             <label>Title : </label>
-            <input type="text"
+            <input type={'text'}
                 value={title}
                 name={'title'}
                 onChange={(event) => {
                     setTitle(event.target.value);
-                    setMovie({
-                        id: '',
-                        title: title,
-                        rate: rate,
-                        comment: comment,
-                        date: date
-                    });
-                }
-                }
+                    
+                }}
             />
 
             <label>Rate : </label>
@@ -63,13 +52,7 @@ export const Form = (props: CreateMovieParams) => {
                 min={0}
                 onChange={(event) => {
                     setRate(Number(event.target.value));
-                    setMovie({
-                        id: '',
-                        title: title,
-                        rate: rate,
-                        comment: comment,
-                        date: date
-                    });
+                    
                 }}
             />
 
@@ -79,13 +62,7 @@ export const Form = (props: CreateMovieParams) => {
                 name={'date'}
                 onChange={(event) => {
                     setDate(event.target.value);
-                    setMovie({
-                        id: '',
-                        title: title,
-                        rate: rate,
-                        comment: comment,
-                        date: date
-                    });
+                    
                 }}
             />
 
@@ -95,20 +72,13 @@ export const Form = (props: CreateMovieParams) => {
                 name={'comment'}
                 onChange={(event) => {
                     setComment(event.target.value);
-                    setMovie({
-                        id: '',
-                        title: title,
-                        rate: rate,
-                        comment: comment,
-                        date: date
-                    });
+                    
                 }}
             />
 
             <input type="submit" value="Save" onClick={(event) => {
                 event.preventDefault();
                 onSaveMovie();
-                onHiddenForm();
             }}
             />
         </form>
