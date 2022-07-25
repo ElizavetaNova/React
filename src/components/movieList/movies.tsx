@@ -1,7 +1,6 @@
 import deleteIcon from '../../images/close.svg';
 import { Movie } from '../../interfaces/movie';
 import './movies.scss';
-import React, { Component } from 'react';
 
 interface CreateMovieParams {
     movies: Movie[];

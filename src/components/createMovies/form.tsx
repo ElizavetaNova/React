@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Movie } from '../../interfaces/movie';
 import './form.scss';
-import React, { Component } from 'react';
-
 
 interface CreateMovieParams {
     saveMovie(newNovie: Movie): void;
@@ -25,7 +23,7 @@ export const Form = (props: CreateMovieParams) => {
             title,
             rate,
             comment,
-            date
+            date,
         };
         props.saveMovie(newMovie);
         HideForm();
@@ -35,14 +33,16 @@ export const Form = (props: CreateMovieParams) => {
         <form className={'add-movie__form'} >
 
             <label>Title : </label>
-            <input type={'text'}
+            <input
+                type={'text'}
                 value={title}
                 name={'title'}
                 onChange={(event) => {setTitle(event.target.value);}}
             />
 
             <label>Rate : </label>
-            <input type="number"
+            <input
+                type="number"
                 value={rate}
                 name={'rate'}
                 max={5}
@@ -52,7 +52,8 @@ export const Form = (props: CreateMovieParams) => {
             />
 
             <label>Date : </label>
-            <input type="date"
+            <input
+                type="date"
                 value={date}
                 name={'date'}
                 onChange={(event) => {setDate(event.target.value);}}
@@ -65,7 +66,8 @@ export const Form = (props: CreateMovieParams) => {
                 onChange={(event) => {setComment(event.target.value);}}
             />
 
-            <input type="submit" value="Save"
+            <input
+                type="submit" value="Save"
                 onClick={(event) => {
                     event.preventDefault();
                     onSaveMovie();

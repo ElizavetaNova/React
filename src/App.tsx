@@ -6,7 +6,6 @@ import { Movie } from './interfaces/movie';
 import { Movies } from './components/movieList/movies';
 import { Form } from './components/createMovies/form';
 
-
 interface AppState {
     movies: Movie[];
     showForm: boolean;
