@@ -66,7 +66,7 @@ export const Form = (props: CreateMovieParams) => {
             />
 
             <input
-                type="submit" value="Save"
+                type={'submit'} value={'Save'}
                 onClick={(event) => {
                     event.preventDefault();
                     onSaveMovie();
