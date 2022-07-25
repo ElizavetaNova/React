@@ -16,11 +16,11 @@ class App extends Component<{}, AppState> {
     
     state = {
         movies: [],
-        showForm: false
+        showForm: false,
     };
 
     toggleForm = () => {
-        this.setState({ showForm: !this.state.showForm })
+        this.setState({ showForm: !this.state.showForm });
     };
 
     componentDidMount() {
@@ -34,7 +34,7 @@ class App extends Component<{}, AppState> {
             title: newMovie.title,
             rate: newMovie.rate,
             comment: newMovie.comment,
-            date: newMovie.date
+            date: newMovie.date,
         });
         this.setState({ movies: newMovies });
     };
