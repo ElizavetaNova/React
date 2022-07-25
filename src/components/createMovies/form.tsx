@@ -42,7 +42,7 @@ export const Form = (props: CreateMovieParams) => {
 
             <label>Rate : </label>
             <input
-                type="number"
+                type={'number'}
                 value={rate}
                 name={'rate'}
                 max={5}
@@ -52,7 +52,7 @@ export const Form = (props: CreateMovieParams) => {
 
             <label>Date : </label>
             <input
-                type="date"
+                type={'date'}
                 value={date}
                 name={'date'}
                 onChange={(event: ChangeEvent<HTMLInputElement>) => setDate(event.target.value)}
