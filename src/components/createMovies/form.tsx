@@ -37,7 +37,7 @@ export const Form = (props: CreateMovieParams) => {
                 type={'text'}
                 value={title}
                 name={'title'}
-                onChange={(event: ChangeEvent<HTMLInputElement>) => { setTitle(event.target.value); }}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => setTitle(event.target.value)}
             />
 
             <label>Rate : </label>
@@ -47,8 +47,7 @@ export const Form = (props: CreateMovieParams) => {
                 name={'rate'}
                 max={5}
                 min={0}
-                onChange={(event: ChangeEvent<HTMLInputElement>) => {setRate(Number(event.target.value));
-                }}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => setRate(Number(event.target.value))}
             />
 
             <label>Date : </label>
@@ -56,14 +55,14 @@ export const Form = (props: CreateMovieParams) => {
                 type="date"
                 value={date}
                 name={'date'}
-                onChange={(event: ChangeEvent<HTMLInputElement>) => {setDate(event.target.value);}}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => setDate(event.target.value)}
             />
 
             <label>Description : </label>
             <textarea
                 value={comment}
                 name={'comment'}
-                onChange={(event: ChangeEvent<HTMLTextAreaElement>) => {setComment(event.target.value);}}
+                onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setComment(event.target.value)}
             />
 
             <input
