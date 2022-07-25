@@ -55,7 +55,7 @@ class App extends Component<{}, AppState> {
                         </h1>
                         <Movies
                             movies={this.state.movies}
-                            deleteNote={(index) => this.deleteNote(index)}
+                            deleteNote={(index: number) => this.deleteNote(index)}
                         />
                         <div className={'app-add_movie add-movie'}>
                             <button className={'add-movie__btn primary-button'} onClick={this.toggleForm}>
