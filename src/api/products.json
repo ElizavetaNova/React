@@ -1,0 +1,12 @@
+[
+    {
+        "id": 0,
+        "category": "eat",
+        "name": "meet"
+    },
+    {
+        "id": 1,
+        "category": "electronic",
+        "name": "phone"
+    }
+]

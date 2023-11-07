@@ -1,0 +1,16 @@
+{
+    "products": [
+    {
+        "id": 0,
+        "category": "eat",
+        "name": "meet",
+        "price": 1000
+    },
+    {
+        "id": 1,
+        "category": "electronic",
+        "name": "phone",
+        "price": 3000
+    }
+]
+}

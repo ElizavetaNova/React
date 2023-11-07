@@ -3,7 +3,7 @@ import movies from './MOVIES.json';
 import { Header } from './components/header/header';
 import './styles/app.scss';
 import { Movie } from './interfaces/movie';
-import { Movies } from './components/movieList/movies';
+import { ProductsList } from './components/productsList/productsList';
 import { Form } from './components/createMovies/form';
 
 interface AppState {
@@ -11,7 +11,8 @@ interface AppState {
     showForm: boolean;
 }
 
-class App extends Component<{}, AppState> {    
+class App extends Component<{}, AppState> {
+    
     
     state = {
         movies: [],
@@ -53,10 +54,7 @@ class App extends Component<{}, AppState> {
                         <h1 className={'app__title'}>
                             Movies
                         </h1>
-                        <Movies
-                            movies={this.state.movies}
-                            deleteNote={(index: number) => this.deleteNote(index)}
-                        />
+                        <ProductsList/>
                         <div className={'app-add_movie add-movie'}>
                             <button className={'add-movie__btn primary-button'} onClick={this.toggleForm}>
                                 {this.state.showForm ? 'Cancel' : 'Add'}
