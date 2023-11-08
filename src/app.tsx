@@ -5,6 +5,7 @@ import './styles/app.scss';
 import { Movie } from './interfaces/movie';
 import { ProductsList } from './components/productsList/productsList';
 import { Form } from './components/createMovies/form';
+import { Filter } from './components/filter/filter';
 
 interface AppState {
     movies: Movie[];
@@ -54,6 +55,7 @@ class App extends Component<{}, AppState> {
                         <h1 className={'app__title'}>
                             Movies
                         </h1>
+                        <Filter/>
                         <ProductsList/>
                         <div className={'app-add_movie add-movie'}>
                             <button className={'add-movie__btn primary-button'} onClick={this.toggleForm}>

@@ -1,3 +1,4 @@
 {
-    "/api/products": "/products"
+    "/api/products*": "/products",
+    "/api/categories": "/categories"
 }

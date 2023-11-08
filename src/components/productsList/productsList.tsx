@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/dispatchAndSelector';
 import './movies.scss';
-import { productsList } from '../../store/thunks/productsList/productsList';
+import { getProductsList } from '../../store/thunks/productsList/productsList';
 import { Product } from '../../interfaces/product';
 
 // interface CreateMovieParams {
@@ -14,7 +14,7 @@ export const ProductsList = () => {
     const { products } = useAppSelector((state) => state.productsList);
 
     useEffect(() => {
-        dispatch(productsList());
+        dispatch(getProductsList());
     }, [dispatch]);
 
     return (
