@@ -1,33 +1,34 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { Product } from "../../../interfaces/product";
-import { getCategoriesList, getProductsList, setCheckedCategory } from "../../thunks/productsList/productsList";
+import { createSlice } from '@reduxjs/toolkit';
+import { Product } from '../../../interfaces/product';
+import { getCategoriesList, getProductsWithFilters } from '../../thunks/productsList/productsList';
 
 const initialState: any = {
     products: [],
     categories: [],
-    checkedCategory: '',
-}
+};
 
 export const productSlice = createSlice({
     name: 'product',
     initialState,
     reducers: {},
     extraReducers: builder => {
-        builder.addCase(getProductsList.fulfilled, (state, action) => {
-            console.log(action.payload);
-            state.products = state.checkedCategory === ''
-            ? action.payload
-            : action.payload.map((product: Product) => product.category === state.checkedCategory);
-        });
         builder.addCase(getCategoriesList.fulfilled, (state, action) => {
             state.categories = action.payload;
-        })
-        builder.addCase(setCheckedCategory.fulfilled, (state, action) => {
-            
-            state.checkedCategory = action.payload.categoryValue;
-            state.products = action.payload.data;
-        })
-    }
-})
+        });
+        builder.addCase(getProductsWithFilters.fulfilled, (state, action) => {
+            if (action.payload.name) {
+                const products: Product[] = action.payload.data.filter((product: Product) => product.name.toLowerCase().includes(action.payload.name!.toLowerCase()));
+                if (products.length > 0) {
+                    state.products = products;
+                } else {
+                    state.products = action.payload.data;
+                }
+                
+            } else {
+                state.products = action.payload.data;
+            }
+        });
+    },
+});
 
 export default productSlice.reducer;
