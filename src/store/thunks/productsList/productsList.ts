@@ -24,7 +24,7 @@ export const getProductsWithFilters = createAsyncThunk(
         const { filterIs, name, category, sortedBy, order } = props;
         try {
             if (filterIs) {
-                const res = await fetch(`http://localhost:3004/api/products?${category && category !== 'ALL'
+                const res = await fetch(`${globalApiServer}/products?${category && category !== 'ALL'
                         ? `&category=${category}`
                         : ''}${sortedBy
                             ? order?.length
