@@ -1,0 +1,53 @@
+{
+  "products": [
+    {
+      "id": 0,
+      "category": "MEET",
+      "name": "Вырезка говяжья",
+      "price": 1000
+    },
+    {
+      "id": 1,
+      "category": "VEGETABLES",
+      "name": "Картофель",
+      "price": 200
+    },
+    {
+      "id": 2,
+      "category": "FRUITS",
+      "name": "Aples",
+      "price": 500
+    },
+    {
+      "id": 3,
+      "category": "FRUITS",
+      "name": "Груши",
+      "price": 600
+    },
+    {
+      "id": 4,
+      "category": "BAKERY",
+      "name": "Пирог вишневый",
+      "price": 1500
+    },
+    {
+      "id": 5,
+      "category": "DAIRY",
+      "name": "Сыр голландский",
+      "price": 2500
+    },
+    {
+      "id": 6,
+      "category": "DAIRY",
+      "name": "Молоко",
+      "price": 300
+    }
+  ],
+  "categories": [
+    "MEET",
+    "VEGETABLES",
+    "FRUITS",
+    "BAKERY",
+    "DAIRY"
+  ]
+}
